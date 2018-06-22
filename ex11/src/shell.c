@@ -48,8 +48,7 @@ int lsh_ls(char **args)
   printf ("$_>");
   while ((pDirent = readdir(pDir)) != NULL) {
     if(pDirent->d_name[0] != '.')
-      write(1, pDirent->d_name, strlen(pDirent->d_name));
-     // printf ("%s ", pDirent->d_name);
+      printf ("%s ", pDirent->d_name);
   }
 
   printf ("\n");
@@ -80,7 +79,7 @@ int lsh_echo(char **args)
     printf("%s", args[i]);
     i++;
   }
-
+  free(word);
   printf("\n");
 
   return 1;
