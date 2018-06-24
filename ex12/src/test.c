@@ -21,13 +21,13 @@ int test_small()
 int test_long()
 {
 	int **a = (int **)halloc(sizeof(int) * 10000);
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		int *tmp = (int *)halloc(sizeof(int));
 		*tmp = i;
 		a[i] = tmp;
 	}
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 1; i++)
 		free(a[i]);
   	free(a);
 	return 0;
@@ -39,3 +39,4 @@ int main(int argc, char *argv[])
 	test_long();
 	return 0;
 }
+
