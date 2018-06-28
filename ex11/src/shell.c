@@ -88,6 +88,7 @@ int lsh_echo(char **args)
 int lsh_export(char **args)
 {
   char *key, *data, *p, *word;
+  int i;
 
   if(args[1] == NULL)
     return 1;
@@ -104,7 +105,7 @@ int lsh_export(char **args)
     p = strtok(NULL, "=");
   }
 
-  if(key == data)
+  if(!strcmp(key, data))
     return 1;
 
   hash_set(ht, key, (void*)data);
