@@ -1,7 +1,6 @@
 #ifndef _FILLER_H_
 #define _FILLER_H_
 
-
 typedef struct  map_s
 {
   int           h;
@@ -59,6 +58,8 @@ pos_t           play(req_t *core, filler_t *filler);
 void            print_pos(pos_t p);
 
 /*Tools*/
+int check_free_space(map_t *map, elem_t *new_elem, pos_t p);
+int check_connection(map_t *map, elem_t *new_elem, pos_t p, char symbol);
 int             set_nonblocking(int fd);
 void            fatal(char *msg);
 void            create_filler(filler_t *filler);
