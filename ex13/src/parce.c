@@ -9,14 +9,12 @@
 
 req_t 		*parse_all(char *all)
 {
-	int 	i, n, index_all, flag;
-	map_t 	map;
-	elem_t 	elem;
-	req_t 	*request;
-	pos_t 	position;
+	int i, j, n, index_all;
+	req_t *request;
+	pos_t position;
 	char 	*pos1, *pos2;
 
-	i = 0; flag = 0; n = 0; index_all = 0;
+	n = 0; index_all = 0;
 	request = (req_t *) malloc(sizeof(req_t));
 	pos1 = (char *) malloc(BUF_SIZE * sizeof(char));
 	pos2 = (char *) malloc(BUF_SIZE * sizeof(char));
@@ -39,11 +37,11 @@ req_t 		*parse_all(char *all)
 
 	request->map.array = (char **) malloc(request->map.h * sizeof(char*));
 
-	for(int i = 0; i < request->map.h; i++)
+	for(i = 0; i < request->map.h; i++)
 		request->map.array[i] = (char *) malloc((request->map.w + 1) * sizeof(char));
 
-	for(int i = 0; i < request->map.h; i++)
-		for(int j = 0; j < request->map.w + 1; j++){
+	for(i = 0; i < request->map.h; i++)
+		for(j = 0; j < request->map.w + 1; j++){
 			*(*(request->map.array + i) + j) = *(all + index_all);
 			index_all++;
 		}
@@ -62,11 +60,11 @@ req_t 		*parse_all(char *all)
 
 	request->elem.array = (char **) malloc(request->elem.h * sizeof(char*));
 
-	for(int i = 0; i < request->elem.h; i++)
+	for(i = 0; i < request->elem.h; i++)
 		request->elem.array[i] = (char *)malloc((request->elem.w+1) * sizeof(char));
 
-	for(int i = 0; i < request->elem.h; i++)
-		for(int j = 0; j < request->elem.w +1; j++){
+	for(i = 0; i < request->elem.h; i++)
+		for(j = 0; j < request->elem.w +1; j++){
 			*(*(request->elem.array + i) + j) = *(all + index_all);
 		  index_all++;
 		}

@@ -4,7 +4,7 @@
 
 void 		print_pos(pos_t p)
 {
-	FILE 	*logger;
+	//FILE 	*logger;
 
 	dprintf(1, "%d %d", p.x, p.y);
 

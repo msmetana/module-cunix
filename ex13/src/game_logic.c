@@ -5,12 +5,12 @@
 int count = 0;
 int flag = 1;
 
-pos_t 		play(req_t *core, filler_t *filler)
+pos_t 		play(req_t *core)
 {
   int quarter;
   pos_t res;
   pos_t first_el;
-  FILE 	*logger;
+  // FILE 	*logger;
   int 	h, w, i, j, c;
 
   quarter = 0;
