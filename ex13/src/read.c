@@ -29,7 +29,8 @@ void  find_size_elem(char res[32], char *buf, int start_pos)
 
 int  end_read(stream_t* p)
 {
-  int i, pos_size_elem, size_map;
+  int pos_size_elem, size_map;
+  unsigned int i;
   char arr_elem_size[32];
   pos_t 	size_elem;
 

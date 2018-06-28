@@ -45,7 +45,7 @@ void 			start_game(filler_t *filler)
 			req = read_request(filler);
 
 			if(req != NULL){
-				p = play(req, filler);
+				p = play(req);
 				filler->status = 1;
 			}
 		}

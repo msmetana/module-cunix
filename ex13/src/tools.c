@@ -32,8 +32,10 @@ void destroy_filler(filler_t *filler)
 
 int check_free_space(map_t *map, elem_t *new_elem, pos_t p)
 {
-  for(int i = 0; i < new_elem->h; i++)
-    for(int j = 0; j < new_elem->w; j++)
+  int i, j;
+
+  for(i = 0; i < new_elem->h; i++)
+    for(j = 0; j < new_elem->w; j++)
       if(new_elem->array[i][j] == '*'){
         if(i + p.y < map->h && j + p.x < map->w && i + p.y >= 0 && j + p.x >= 0){
           if(map->array[i + p.y][j + p.x] != '.')
@@ -48,11 +50,10 @@ int check_free_space(map_t *map, elem_t *new_elem, pos_t p)
 
 int check_connection(map_t *map, elem_t *new_elem, pos_t p, char symbol)
 {
-  int i_max = map->w - p.y;
-  int j_max = map->h - p.x;
+  int i, j;
 
-  for(int i = 0; i < new_elem->h; i++)
-    for(int j = 0; j < new_elem->w; j++)
+  for(i = 0; i < new_elem->h; i++)
+    for(j = 0; j < new_elem->w; j++)
       if(new_elem->array[i][j] != '.'){
         if(i + p.y + 1 < map->h && map->array[i + p.y + 1][j + p.x] == symbol)
             return 0;
