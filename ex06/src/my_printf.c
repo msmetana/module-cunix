@@ -61,7 +61,7 @@ int my_printf(const char *format, ...)
 {
    extern long write(int, const char*, unsigned int);
    va_list args;
-   char *my_string, *str, *s;
+   char *my_string, *str;
    int i, j, im, c, flag, flag_0;
 
    my_string = malloc(256*sizeof(char));
@@ -110,7 +110,7 @@ int my_printf(const char *format, ...)
             }
           }
           j = 0;
-          while(j < strlen(str)){
+          while(j < (int) strlen(str)){
             my_string[im] = str[j];
             j++; im++;
           }
@@ -129,3 +129,4 @@ int my_printf(const char *format, ...)
 
    return 0;
 }
+

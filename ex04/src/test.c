@@ -1,11 +1,10 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
 #include "test.h"
 
-int   test_small()
+void   test_small()
 {
   assert(my_atoi("0") == 0);
   assert(my_atoi("-0") == 0);
@@ -15,7 +14,7 @@ int   test_small()
   assert(my_atoi("1k") == 1);
 }
 
-int           test_long()
+void           test_long()
 {
   assert(my_atoi("123456789") == 123456789);
   assert(my_atoi("2147483647") == 2147483647);
@@ -26,7 +25,7 @@ int           test_long()
   assert(my_atoi("0") == atoi("0"));
 }
 
-int           test_verif()
+void           test_verif()
 {
   assert(atoi("0") == 0);
   assert(atoi("-0") == 0);
@@ -43,7 +42,7 @@ int           test_verif()
   assert(atoi("1234QWERTY1234") == 1234);
 }
 
-int     test_itoa()
+void     test_itoa()
 {
 
   assert(strcmp(my_itoa(0), "0") == 0);
@@ -54,11 +53,14 @@ int     test_itoa()
   assert(strcmp(my_itoa(-12345678), "-12345678") == 0);
   assert(strcmp(my_itoa(-1234567890), "-1234567890") == 0);
 }
-int   main(int argc, char *argv[])
+
+int   main()
 {
   test_small();
   test_long();
   test_verif();
   test_itoa();
+
   return(0);
 }
+

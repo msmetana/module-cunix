@@ -1,6 +1,6 @@
 #include "filler.h"
 
-int  main()
+int         main()
 {
 	filler_t  filler;
 

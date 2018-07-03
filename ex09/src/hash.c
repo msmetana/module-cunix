@@ -6,6 +6,7 @@
 
 hashtable_t  *hash_create(unsigned int size)
 {
+  unsigned int i;
 	hashtable_t *new;
 
 	if(size <= 0)
@@ -15,7 +16,7 @@ hashtable_t  *hash_create(unsigned int size)
   new->size = size;
   new->table = (void **) malloc(size*sizeof(void*));
 
-  for(int i = 0; i < size; i++)
+  for(i = 0; i < size; i++)
 		new->table[i] = NULL;
 
   return new;
@@ -23,9 +24,10 @@ hashtable_t  *hash_create(unsigned int size)
 
 void 	hash_destroy(hashtable_t *ht, void (*fp)(void *data))
 {
+  unsigned int i;
 	node_t *p;
 
-	for(int i = 0; i < ht->size; i++)
+	for(i = 0; i < ht->size; i++)
 		if(ht->table[i] != NULL){
 			p = ht->table[i];
 			list_destroy(&p, fp);

@@ -26,10 +26,9 @@ int my_atoi(const char *nptr)
     i++;
   }
 
-  if(count >= 4294967296)
-      count -= 4294967296;
   if (nptr[0] == '-')
     count = (-1)*count;
+
   return count;
 }
 

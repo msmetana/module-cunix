@@ -88,7 +88,6 @@ int lsh_echo(char **args)
 int lsh_export(char **args)
 {
   char *key, *data, *p, *word;
-  int i;
 
   if(args[1] == NULL)
     return 1;
@@ -113,14 +112,14 @@ int lsh_export(char **args)
   return 1;
 }
 
-int lsh_env(char **args)
+int lsh_env(__attribute__((unused)) char **args)
 {
   hash_print(ht);
 
   return 1;
 }
 
-int lsh_exit(char **args)
+int lsh_exit(__attribute__((unused)) char **args)
 {
   printf("\n");
 
@@ -129,7 +128,7 @@ int lsh_exit(char **args)
 
 int lsh_launch(char **args)
 {
-  pid_t pid, wpid;
+  pid_t pid;
   int status;
 
   pid = fork();
@@ -147,7 +146,7 @@ int lsh_launch(char **args)
   } else {
     // Parent process
     do {
-      wpid = waitpid(pid, &status, WUNTRACED);
+      waitpid(pid, &status, WUNTRACED);
     } while (!WIFEXITED(status) && !WIFSIGNALED(status));
   }
 
@@ -171,7 +170,7 @@ int lsh_execute(char **args)
 char *lsh_read_line(void)
 {
   char *line;
-  ssize_t bufsize;
+  size_t bufsize;
 
   line = NULL;
   bufsize = 0;
@@ -236,7 +235,7 @@ void lsh_loop(void)
   } while (status);
 }
 
-int main(int argc, char **argv)
+int main()
 {
   ht = hash_create(10);
 

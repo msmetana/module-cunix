@@ -52,14 +52,14 @@ pos_t           parse_size(char *answer);
 
 /*Functions for game logic*/
 void            start_game(filler_t *filler);
-pos_t           play(req_t *core, filler_t *filler);
+pos_t           play(req_t *core);
 
 /*Functions for printing*/
 void            print_pos(pos_t p);
 
 /*Tools*/
-int check_free_space(map_t *map, elem_t *new_elem, pos_t p);
-int check_connection(map_t *map, elem_t *new_elem, pos_t p, char symbol);
+int             check_free_space(map_t *map, elem_t *new_elem, pos_t p);
+int             check_connection(map_t *map, elem_t *new_elem, pos_t p, char symbol);
 int             set_nonblocking(int fd);
 void            fatal(char *msg);
 void            create_filler(filler_t *filler);

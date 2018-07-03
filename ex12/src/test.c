@@ -7,9 +7,9 @@
 int test_small()
 {
 	char *foo = (char *)halloc(20);
-	assert( foo >  0x0000000000000001);
+	assert( strcmp(foo,"0x0000000000000001"));
 	free(foo);
-	foo = (char *) halloc(10000000000000000000);
+	foo = (char *) halloc(10000000000000000000UL);
 	assert(foo == NULL);
 	free(foo);
   	foo = (char *) halloc(0);
@@ -33,7 +33,7 @@ int test_long()
 	return 0;
 }
 
-int main(int argc, char *argv[])
+int main()
 {
 	test_small();
 	test_long();

@@ -30,4 +30,4 @@ test:				re
 						@(./$(NAME) && echo "Test success" || echo "Test Fails")
 
 debug:              $(TNAME)
-					valgrind -v --leak-check=full --track-origins=yes ./$(TNAME)
+					valgrind -v --leak-check=full --track-origins=yes ./$(NAME)

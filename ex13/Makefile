@@ -17,7 +17,7 @@ OBJS_TEST   		:= $(SRCS_TEST:.c=.o)
 
 OBJS_STR    		:= $(SRCS_STR:.c=.o)
 
-NAME				:= filler
+NAME				:= msmetana
 
 NAME_TEST   		:= filler_test
 
@@ -26,35 +26,35 @@ NAME_STR    		:= string_test
 all:				$(NAME)
 
 $(NAME):			$(OBJS)
-						$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) -lm
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDFLAGS) -lm
 
 $(NAME_TEST):  		$(OBJS_TEST)
-						$(CC) $(CFLAGS) -o $(NAME_TEST) $(OBJS_TEST) $(LDFLAGS) -lm
+	$(CC) $(CFLAGS) -o $(NAME_TEST) $(OBJS_TEST) $(LDFLAGS) -lm
 
 $(NAME_STR):  		$(OBJS_STR)
-						$(CC) $(CFLAGS) -o $(NAME_STR) $(OBJS_STR) $(LDFLAGS) -lm
+	$(CC) $(CFLAGS) -o $(NAME_STR) $(OBJS_STR) $(LDFLAGS) -lm
 
 clean:
-						$(RM) $(OBJS) $(OBJS_TEST)
+	$(RM) $(OBJS) $(OBJS_TEST)
 
 fclean: 			clean
-						$(RM) $(NAME_TEST)
+	$(RM) $(NAME_TEST) $(NAME)
 
 re: 				fclean $(NAME_TEST)
 
 re_str:    			fclean $(NAME_STR)
 
 test:				re
-						@(./$(NAME_TEST) && echo "Test success" || echo "Test Fails")
+	@(./$(NAME_TEST) && echo "Test success" || echo "Test Fails")
 
 test_valgrind:		re
-						@(valgrind ./$(NAME_TEST) && echo "Test success" || echo "Test Fails")
+	@(valgrind ./$(NAME_TEST) && echo "Test success" || echo "Test Fails")
 
 test_string:    	re_str
-								@(./$(NAME_STR) && echo "Test success" || echo "Test Fails")
+	@(./$(NAME_STR) && echo "Test success" || echo "Test Fails")
 
 test_string_valgrind:  re_str
-												@(valgrind --track-origins=yes ./$(NAME_STR) && echo "Test success" || echo "Test Fails")
+	@(valgrind --track-origins=yes ./$(NAME_STR) && echo "Test success" || echo "Test Fails")
 
 debug:              $(NAME)
-					valgrind -v --leak-check=full --track-origins=yes ./$(NAME)
+	valgrind -v --leak-check=full --track-origins=yes ./$(NAME)

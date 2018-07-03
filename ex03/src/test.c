@@ -1,11 +1,10 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
 #include "test.h"
 
-int   test_small()
+void   test_small()
 {
   char buf[32];
 
@@ -16,7 +15,7 @@ int   test_small()
   assert(strcmp(buf, "123456789") == 0);
 }
 
-int           test_long()
+void           test_long()
 {
   char        buf[32];
   const char  *ptr;
@@ -26,7 +25,7 @@ int           test_long()
   assert(strcmp(buf, ptr) == 0);
 }
 
-int           test_verif()
+void           test_verif()
 {
   char        buf[32];
   const char  *ptr;
@@ -36,10 +35,12 @@ int           test_verif()
   assert(strcmp(buf, ptr) == 0);
 }
 
-int   main(int argc, char *argv[])
+int   main()
 {
   test_small();
   test_long();
   test_verif();
+
   return(0);
 }
+

@@ -131,7 +131,7 @@ void 		list_print(node_t *head)
 {
 	node_t 	*p = head;
 	while(p != NULL){
-    printf("\n%s: %s", p->key, p->data);
+    printf("\n%s: %s", p->key, (char*) p->data);
     p = p->next;
   }
 }
