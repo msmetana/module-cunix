@@ -2,6 +2,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+
 #define META_SIZE sizeof(struct block_meta)
 
 struct block_meta{
@@ -27,9 +28,10 @@ struct block_meta *find_free_block(struct block_meta **last, size_t size){
 
 struct block_meta *request_space(struct block_meta* last, size_t size){
   struct block_meta *block;
+  void *request;
 
   block = sbrk(0);
-  void *request = sbrk(size + META_SIZE);
+  request = sbrk(size + META_SIZE);
 
   if(request == (void*) -1)
     return NULL;
@@ -58,15 +60,17 @@ void *halloc(size_t size){
 
     global_base = block;
   }else{
-    struct block_meta *last = global_base;
+    struct block_meta *last;
+
+    last = global_base;
     block = find_free_block(&last, size);
 
-    if(!block){ // Failed to find free block
+    if(!block){
       block = request_space(last, size);
       if (!block)
         return NULL;
 
-    }else      // Found free block
+    }else
       block->free = 0;
   }
 
@@ -77,7 +81,7 @@ struct block_meta *get_block_ptr(void *ptr){
   return (struct block_meta*)ptr - 1;
 }
 
-void free(void *ptr){
+void my_free(void *ptr){
   if(!ptr)
     return;
 
